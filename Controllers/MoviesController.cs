@@ -26,9 +26,15 @@ namespace WebMovies.Controllers
         public string SearchString { get; set; } = string.Empty;
 
         // GET: Movies
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(int pageIndex = 1)
         {
-            return View(await _context.Movies.ToListAsync());
+            var query = _context.Movies.AsQueryable();
+
+            int pageSize = 10;
+            var page = await PaginatedList<Movie>.CreateAsync(query.AsNoTracking(), pageIndex, pageSize);
+
+            return View(page);
         }
 
         public async Task<IActionResult> Search()
