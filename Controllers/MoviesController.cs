@@ -29,34 +29,23 @@ namespace WebMovies.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int pageIndex = 1)
         {
-            var query = _context.Movies.AsQueryable();
-
-            int pageSize = 10;
-            var page = await PaginatedList<Movie>.CreateAsync(query.AsNoTracking(), pageIndex, pageSize);
-
-            return View(page);
-        }
-
-        public async Task<IActionResult> Search()
-        {
+            IQueryable<Movie> query;
             if (string.IsNullOrEmpty(SearchString))
             {
-                return RedirectToAction(nameof(Index));
+                query = _context.Movies.AsQueryable();
             }
             else
             {
                 SearchString = SearchString.ToLower();
+                query = _context.Movies.Where(m => m.Name.ToLower().Contains(SearchString));
             }
 
-            var results = _context.Movies.Where(m => m.Name.ToLower().Contains(SearchString) ||
-                                                    m.Genre!.ToLower().Contains(SearchString) ||
-                                                    m.Director!.ToLower().Contains(SearchString) ||
-                                                    m.Cast!.ToLower().Contains(SearchString) ||
-                                                    m.Synopsis!.ToLower().Contains(SearchString) ||
-                                                    m.Keywords!.ToLower().Contains(SearchString))
-                                        .ToListAsync();
+            int pageSize = 10;
+            var page = await PaginatedList<Movie>.CreateAsync(query.AsNoTracking(), pageIndex, pageSize);
 
-            return View("Index", await results);
+            ViewBag.SearchString = SearchString;
+
+            return View(page);
         }
 
         [HttpGet]
