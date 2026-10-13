@@ -22,28 +22,46 @@ namespace WebMovies.Controllers
             _userManager = userManager;
         }
 
+        public class SearchOptions
+        {
+            public string MovieTitle { get; set; } = string.Empty;
+            public string MovieGenre { get; set; } = string.Empty;
+            public int ReleaseYear { get; set; } = 0;
+            public float MinScore { get; set; } = 0;
+            public string SortOption { get; set; } = string.Empty;
+        }
+
         [BindProperty(SupportsGet = true)]
-        public string SearchString { get; set; } = string.Empty;
+        public SearchOptions Search { get; set; } = new SearchOptions();
 
         // GET: Movies
         [HttpGet]
         public async Task<IActionResult> Index(int pageIndex = 1)
         {
+            Search.MovieTitle ??= string.Empty;
+            Search.MovieGenre ??= string.Empty;
+            Search.SortOption ??= string.Empty;
+
             IQueryable<Movie> query;
-            if (string.IsNullOrEmpty(SearchString))
+            query = _context.Movies
+                .Where(m => m.Name.ToLower().Contains(Search.MovieTitle.ToLower()))
+                .Where(m => m.Genre!.ToLower().Contains(Search.MovieGenre.ToLower()))
+                .Where(m => m.ReleaseDate!.Value.Year >= Search.ReleaseYear)
+                .Where(m => m.Score >= Search.MinScore);
+
+            if (Search.SortOption.Equals("ascending"))
             {
-                query = _context.Movies.AsQueryable();
+                query = query.OrderBy(m => m.Name);
             }
-            else
+            else if (Search.SortOption.Equals("descending"))
             {
-                SearchString = SearchString.ToLower();
-                query = _context.Movies.Where(m => m.Name.ToLower().Contains(SearchString));
+                query = query.OrderByDescending(m => m.Name);
             }
 
             int pageSize = 10;
             var page = await PaginatedList<Movie>.CreateAsync(query.AsNoTracking(), pageIndex, pageSize);
 
-            ViewBag.SearchString = SearchString;
+            ViewBag.Search = Search;
 
             return View(page);
         }
