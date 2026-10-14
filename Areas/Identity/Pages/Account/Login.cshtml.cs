@@ -14,9 +14,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using WebMovies.Data;
+using Cinecore.Data;
 
-namespace WebMovies.Areas.Identity.Pages.Account
+namespace Cinecore.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {

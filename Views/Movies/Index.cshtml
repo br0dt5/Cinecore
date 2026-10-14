@@ -1,8 +1,8 @@
-@model PaginatedList<WebMovies.Models.Movie>
+@model PaginatedList<Cinecore.Models.Movie>
 
 @{
     ViewData["Title"] = "All Movies";
-    var search = ViewBag.Search as WebMovies.Controllers.MoviesController.SearchOptions;
+    var search = ViewBag.Search as Cinecore.Controllers.MoviesController.SearchOptions;
 }
 
 <h1 class="fw-semibold mt-4">All Movies</h1>

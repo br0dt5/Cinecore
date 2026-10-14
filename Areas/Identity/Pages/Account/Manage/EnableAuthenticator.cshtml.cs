@@ -13,9 +13,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using WebMovies.Data;
+using Cinecore.Data;
 
-namespace WebMovies.Areas.Identity.Pages.Account.Manage
+namespace Cinecore.Areas.Identity.Pages.Account.Manage
 {
     public class EnableAuthenticatorModel : PageModel
     {

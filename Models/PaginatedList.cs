@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace WebMovies.Models
+namespace Cinecore.Models
 {
     public class PaginatedList<T> : List<T>
     {

@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-WebMovies-e0cd9d73-036b-4990-a440-0537851e8c92</UserSecretsId>
+    <UserSecretsId>fec51aad-39c1-4143-a422-85f47de82513</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
