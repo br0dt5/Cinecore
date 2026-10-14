@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using WebMovies.Models;
+using Cinecore.Models;
 
-namespace WebMovies.Data
+namespace Cinecore.Data
 {
     public class User : IdentityUser
     {

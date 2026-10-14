@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace WebMovies.Models;
+namespace Cinecore.Models;
 
 public class Movie
 {

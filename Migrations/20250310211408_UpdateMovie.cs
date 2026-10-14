@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace WebMovies.Migrations
+namespace Cinecore.Migrations
 {
     /// <inheritdoc />
     public partial class UpdateMovie : Migration

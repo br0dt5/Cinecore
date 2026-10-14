@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebMovies.Data;
+using Cinecore.Data;
 
 #nullable disable
 
-namespace WebMovies.Migrations
+namespace Cinecore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250219204722_UpdateModels")]
@@ -152,7 +152,7 @@ namespace WebMovies.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("WebMovies.Data.User", b =>
+            modelBuilder.Entity("Cinecore.Data.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
@@ -225,7 +225,7 @@ namespace WebMovies.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("WebMovies.Models.Movie", b =>
+            modelBuilder.Entity("Cinecore.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -279,7 +279,7 @@ namespace WebMovies.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebMovies.Data.User", null)
+                    b.HasOne("Cinecore.Data.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -288,7 +288,7 @@ namespace WebMovies.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebMovies.Data.User", null)
+                    b.HasOne("Cinecore.Data.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -303,7 +303,7 @@ namespace WebMovies.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebMovies.Data.User", null)
+                    b.HasOne("Cinecore.Data.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -312,25 +312,25 @@ namespace WebMovies.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("WebMovies.Data.User", null)
+                    b.HasOne("Cinecore.Data.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebMovies.Models.Movie", b =>
+            modelBuilder.Entity("Cinecore.Models.Movie", b =>
                 {
-                    b.HasOne("WebMovies.Data.User", null)
+                    b.HasOne("Cinecore.Data.User", null)
                         .WithMany("FavMovies")
                         .HasForeignKey("UserId");
 
-                    b.HasOne("WebMovies.Data.User", null)
+                    b.HasOne("Cinecore.Data.User", null)
                         .WithMany("Watchlist")
                         .HasForeignKey("UserId1");
                 });
 
-            modelBuilder.Entity("WebMovies.Data.User", b =>
+            modelBuilder.Entity("Cinecore.Data.User", b =>
                 {
                     b.Navigation("FavMovies");
 

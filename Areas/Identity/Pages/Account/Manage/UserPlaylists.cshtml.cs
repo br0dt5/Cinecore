@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using WebMovies.Data;
-using WebMovies.Models;
+using Cinecore.Data;
+using Cinecore.Models;
 
-namespace WebMovies.Areas.Identity.Pages.Account.Manage
+namespace Cinecore.Areas.Identity.Pages.Account.Manage
 {
     public class UserPlaylistsModel : PageModel
     {

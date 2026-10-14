@@ -1,4 +1,4 @@
-namespace WebMovies.Models;
+namespace Cinecore.Models;
 
 public class ErrorViewModel
 {

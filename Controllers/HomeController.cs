@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using WebMovies.Data;
-using WebMovies.Models;
+using Cinecore.Data;
+using Cinecore.Models;
 
-namespace WebMovies.Controllers;
+namespace Cinecore.Controllers;
 
 public class HomeController : Controller
 {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebMovies.Models;
+using Cinecore.Models;
 
-namespace WebMovies.Data;
+namespace Cinecore.Data;
 
 public class ApplicationDbContext : IdentityDbContext<User>
 {
